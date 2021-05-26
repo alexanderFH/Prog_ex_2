@@ -5,7 +5,7 @@ import trafficlight.states.State;
 
 import java.util.Observable;
 
-public class TrafficLightCtrl extends Observable {
+public class TrafficLightCtrl  {
 
     private State greenState;
 
@@ -33,9 +33,10 @@ public class TrafficLightCtrl extends Observable {
         greenState = new State() {
             @Override
             public State getNextState() {
+                System.out.println("Gelb guess ich?");
                 previousState = currentState;
                 setChanged();
-                notifyObservers(yellowState);
+                notifyObservers();
                 return yellowState;
             }
             @Override
@@ -49,7 +50,7 @@ public class TrafficLightCtrl extends Observable {
             public State getNextState() {
                 previousState = currentState;
                 setChanged();
-                notifyObservers(yellowState);
+                notifyObservers();
                 return yellowState;
             }
             @Override
@@ -64,12 +65,12 @@ public class TrafficLightCtrl extends Observable {
                 if (previousState.equals(greenState)) {
                     previousState = currentState;
                     setChanged();
-                    notifyObservers(redState);
+                    notifyObservers();
                     return redState;
                 }else {
                     previousState = currentState;
                     setChanged();
-                    notifyObservers(greenState);
+                    notifyObservers();
                     return greenState;
                 }
             }

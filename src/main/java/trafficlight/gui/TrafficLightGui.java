@@ -36,9 +36,9 @@ public class TrafficLightGui extends JFrame implements ActionListener {
         red = new TrafficLight(Color.red);
         yellow = new TrafficLight(Color.yellow);
         green = new TrafficLight(Color.green);
-        ctrl.addObserver(red);
-        ctrl.addObserver(yellow);
-        ctrl.addObserver(green);
+        ctrl.getGreenState().addObserver(green);
+        ctrl.getRedState().addObserver(red);
+        ctrl.getYellowState().addObserver(yellow);
     }
 
     private void init() {

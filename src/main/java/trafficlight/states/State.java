@@ -2,7 +2,9 @@ package trafficlight.states;
 
 //TODO implement a part of the pattern here
 
-public abstract class State {
+import java.util.Observable;
+
+public abstract class State extends Observable {
 
     public abstract State getNextState();
 
