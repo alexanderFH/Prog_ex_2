@@ -34,6 +34,7 @@ public class TrafficLightCtrl extends Observable {
             @Override
             public State getNextState() {
                 previousState = currentState;
+                setChanged();
                 notifyObservers(yellowState);
                 return yellowState;
             }
@@ -47,6 +48,7 @@ public class TrafficLightCtrl extends Observable {
             @Override
             public State getNextState() {
                 previousState = currentState;
+                setChanged();
                 notifyObservers(yellowState);
                 return yellowState;
             }
@@ -61,10 +63,12 @@ public class TrafficLightCtrl extends Observable {
             public State getNextState() {
                 if (previousState.equals(greenState)) {
                     previousState = currentState;
+                    setChanged();
                     notifyObservers(redState);
                     return redState;
                 }else {
                     previousState = currentState;
+                    setChanged();
                     notifyObservers(greenState);
                     return greenState;
                 }
