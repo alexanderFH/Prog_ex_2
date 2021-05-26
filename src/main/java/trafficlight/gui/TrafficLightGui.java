@@ -15,14 +15,14 @@ public class TrafficLightGui extends JFrame implements ActionListener {
 
     private JButton buttonStop;
 
-    private TrafficLight green = new TrafficLight(Color.green);
-    private TrafficLight yellow = new TrafficLight(Color.yellow);;
-    private TrafficLight red = new TrafficLight(Color.red);
+    private TrafficLight green = null;
+    private TrafficLight yellow = null;
+    private TrafficLight red = null;
 
     private TrafficLightCtrl trafficLightCtrl = null;
 
 
-    public TrafficLightGui(TrafficLightCtrl ctrl){
+    public TrafficLightGui(TrafficLightCtrl ctrl) {
         super(NAME_OF_THE_GAME);
         trafficLightCtrl = ctrl;
         initLights(ctrl);
@@ -33,6 +33,9 @@ public class TrafficLightGui extends JFrame implements ActionListener {
         //TODO implement a part of the pattern here
         //create the TrafficLight
         //connect subject and observer
+        red = new TrafficLight(Color.red);
+        yellow = new TrafficLight(Color.yellow);
+        green = new TrafficLight(Color.green);
     }
 
     private void init() {
@@ -41,7 +44,7 @@ public class TrafficLightGui extends JFrame implements ActionListener {
         buttonStop.setActionCommand(ACTION_COMMAND_STOP);
         buttonStop.addActionListener(this);
 
-        JPanel p1 = new JPanel(new GridLayout(3,1));
+        JPanel p1 = new JPanel(new GridLayout(3, 1));
         p1.add(red);
         p1.add(yellow);
         p1.add(green);
@@ -62,9 +65,9 @@ public class TrafficLightGui extends JFrame implements ActionListener {
         JOptionPane.showMessageDialog(dialog, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-    public void actionPerformed(ActionEvent e){
-        if (ACTION_COMMAND_STOP.equals(e.getActionCommand())){
-           trafficLightCtrl.stop();
+    public void actionPerformed(ActionEvent e) {
+        if (ACTION_COMMAND_STOP.equals(e.getActionCommand())) {
+            trafficLightCtrl.stop();
         }
     }
 }

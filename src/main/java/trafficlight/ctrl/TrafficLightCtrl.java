@@ -3,7 +3,9 @@ package trafficlight.ctrl;
 import trafficlight.gui.TrafficLightGui;
 import trafficlight.states.State;
 
-public class TrafficLightCtrl {
+import java.util.Observable;
+
+public class TrafficLightCtrl extends Observable {
 
     private State greenState;
 
@@ -32,7 +34,7 @@ public class TrafficLightCtrl {
             @Override
             public State getNextState() {
                 previousState = currentState;
-                //TODO useful to update the current state and the old one
+                notifyObservers(yellowState);
                 return yellowState;
             }
             @Override
@@ -45,7 +47,7 @@ public class TrafficLightCtrl {
             @Override
             public State getNextState() {
                 previousState = currentState;
-                //TODO useful to update the current state and the old one
+                notifyObservers(yellowState);
                 return yellowState;
             }
             @Override
@@ -59,11 +61,11 @@ public class TrafficLightCtrl {
             public State getNextState() {
                 if (previousState.equals(greenState)) {
                     previousState = currentState;
-                    //TODO useful to update the current state and the old one
+                    notifyObservers(redState);
                     return redState;
                 }else {
                     previousState = currentState;
-                    //TODO useful to update the current state and the old one
+                    notifyObservers(greenState);
                     return greenState;
                 }
             }
