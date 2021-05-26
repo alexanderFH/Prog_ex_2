@@ -25,10 +25,20 @@ public class TrafficLight extends Light implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         State state = (State) arg;
-        System.out.println(state.getColor());
-        System.out.println(this.on.toString());
-        if (state.getColor().equals(this.on.toString())) {
-            System.out.println("ICH! ");
+        Color stateColor;
+        switch (state.getColor()) {
+            case "green":
+                stateColor = Color.green;
+                break;
+            case "yellow":
+                stateColor = Color.yellow;
+                break;
+            case "red":
+            default:
+                stateColor = Color.red;
+                break;
+        }
+        if (stateColor == on) {
             turnOn(true);
         } else
             turnOn(false);
