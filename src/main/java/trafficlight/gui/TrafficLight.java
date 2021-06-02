@@ -1,11 +1,9 @@
 package trafficlight.gui;
 
 
-import trafficlight.states.State;
+import trafficlight.pattern.Observer;
 
 import java.awt.*;
-import java.util.Observable;
-import java.util.Observer;
 
 public class TrafficLight extends Light implements Observer {
 
@@ -23,9 +21,10 @@ public class TrafficLight extends Light implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update() {
         this.turnOn(!isOn);
     }
+
 
     //TODO implement a part of the pattern here
 }
